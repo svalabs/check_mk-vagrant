@@ -1,0 +1,14 @@
+---
+- name: remove site
+  become: yes
+  shell: | 
+    omd stop
+    omd -f uninstall
+  ignore_errors: true
+
+- name: remove checkmk server
+  become: yes
+  apt:
+    update_cache: yes
+    name: 'check-mk*'
+    state: absent

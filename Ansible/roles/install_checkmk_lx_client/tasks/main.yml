@@ -1,0 +1,6 @@
+---
+- name: install checkmk server
+  become: yes
+  apt:
+    update_cache: yes
+    deb: 'http://{{ hostvars.checkmk_server.ansible_host }}/{{ vars.checkmk_site }}/check_mk/agents/{{ vars.checkmk_client_download }}'

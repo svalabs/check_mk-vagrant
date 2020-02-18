@@ -1,0 +1,11 @@
+---
+- name: update checkmk server
+  become: yes
+  become_user: '{{ vars.checkmk_site }}'
+  shell: | 
+    omd stop
+    omd -f update
+    omd start
+
+
+

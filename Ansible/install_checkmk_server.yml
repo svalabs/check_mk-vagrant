@@ -1,0 +1,6 @@
+---
+- name: install Checkmk Server
+  hosts: checkmk_server
+  remote_user: vagrant
+  roles: 
+    - install_checkmk_server

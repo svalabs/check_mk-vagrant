@@ -1,0 +1,19 @@
+all:
+  vars:
+    checkmk_site: testsite
+    # Version 1.4.0 Dont forget to install xinetd on lx clients
+    # checkmk_server_download: '1.4.0p38/check-mk-raw-1.4.0p38_0.xenial_amd64.deb'
+    # checkmk_client_download: 'check-mk-agent_1.4.0p38-1_all.deb'
+    # Version 1.5.0
+    # checkmk_server_download: '1.5.0p24/check-mk-raw-1.5.0p24_0.xenial_amd64.deb'
+    # checkmk_client_download: 'check-mk-agent_1.5.0p24-1_all.deb'
+    # Version 1.6.0
+    checkmk_server_download: '1.6.0p8/check-mk-enterprise-1.6.0p8.demo_0.xenial_amd64.deb'
+    checkmk_client_download: 'check-mk-agent_1.6.0p8-1_all.deb' 
+  hosts:
+    checkmk_server:
+      ansible_host: '192.168.123.100'
+    checkmk_lx_client:
+      ansible_host: '192.168.123.101'    
+    
+    

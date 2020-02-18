@@ -1,0 +1,8 @@
+---
+- name: install Checkmk Linux Client
+  hosts: 
+    - checkmk_lx_client
+    - checkmk_server
+  remote_user: vagrant
+  roles: 
+    - install_checkmk_lx_client

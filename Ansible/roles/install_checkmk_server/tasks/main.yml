@@ -1,0 +1,38 @@
+---
+- name: Add an Apt signing key, uses whichever key is at the URL
+  become: yes
+  apt_key:
+    url: https://mathias-kettner.de/support/Check_MK-pubkey.gpg
+    state: present
+
+- name: install checkmk server
+  become: yes
+  apt:
+    update_cache: yes
+    deb: 'https://checkmk.de/support/{{ vars.checkmk_server_download }}'
+
+- name: create site
+  become: yes
+  shell: | 
+    omd create {{ vars.checkmk_site }}
+    omd start {{ vars.checkmk_site }}
+  ignore_errors: true
+
+
+- name: set password
+  become: yes
+  shell: |
+    rm /omd/sites/{{ vars.checkmk_site }}/etc/htpasswd
+    htpasswd -nb cmkadmin changeme1234 > /omd/sites/{{ vars.checkmk_site }}/etc/htpasswd
+
+
+- name: Wait for port 80 
+  wait_for:
+    host: '{{ hostvars.checkmk_server.ansible_host }}'
+    port: 80
+    delay: 10
+
+- name: install checkmk agent
+  become: yes
+  apt:
+    deb: 'http://192.168.123.100/{{ vars.checkmk_site }}/check_mk/agents/{{ vars.checkmk_client_download }}'
