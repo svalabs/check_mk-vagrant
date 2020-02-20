@@ -25,15 +25,15 @@ You can change or add some Variables
 
 ## install Checkmk on server
 ```
-ansible-playbook -i Ansible/inventory.yml install_checkmk_server.yml
+ansible-playbook -i Ansible/inventory.yml Ansible/install_checkmk_server.yml
 ```
 ## install Checkmk on client
 ```
-ansible-playbook -i Ansible/inventory.yml install_checkmk_client.yml
+ansible-playbook -i Ansible/inventory.yml Ansible/install_checkmk_client.yml
 ```
 ## uninstall Checkmk server
 ```
-ansible-playbook -i Ansible/inventory.yml remove_checkmk_server.yml
+ansible-playbook -i Ansible/inventory.yml Ansible/remove_checkmk_server.yml
 ```
 ## update Checkmk
 
@@ -43,8 +43,8 @@ execute
 
 ```
 ansible-playbook -i Ansible/inventory.yml Ansible/update_checkmk_server.yml
-ansible-playbook -i Ansible/inventory.yml install_checkmk_server.yml
-ansible-playbook -i Ansible/inventory.yml install_checkmk_client.yml
+ansible-playbook -i Ansible/inventory.yml Ansible/install_checkmk_server.yml
+ansible-playbook -i Ansible/inventory.yml Ansible/install_checkmk_client.yml
 ```
 
 Now the environment is updated
